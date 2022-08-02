@@ -1,4 +1,4 @@
-apt update && apt full-upgrade -y && apt install xorg slim freerd2-x11 -y
+apt update && apt full-upgrade -y && apt install xorg slim freerd2-x11 ufw -y
 
 echo "default_user	user" >> /etc/slim.conf
 echo "auto_login	yes"  >> /etc/slim.conf
@@ -40,7 +40,6 @@ EOF
 
 chown user /home/user/.xsession
 
-apt install ufw -y
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow from 192.168.0.0/17 to any port ssh
