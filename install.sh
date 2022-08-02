@@ -23,7 +23,7 @@ exec /usr/bin/xfreerdp \
 /auto-reconnect-max-retries:0 \
 /cert-ignore \
 -compression \
-/d:dc.local \
+/d:dc \
 -decorations \
 /dynamic-resolution \
 /f \
@@ -33,6 +33,7 @@ exec /usr/bin/xfreerdp \
 -sec-nla \
 /sec:tls \
 /rfx-mode:image \
+/u:'' \
 /v:192.168.100.3:3389
 EOF
 "
