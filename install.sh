@@ -26,6 +26,7 @@ do
           /rfx-mode:image \
           /u:'' \
           /v:192.168.100.3:3389
+
 # -r scard:"EZCCID Smart Card Reader 00 00"="EZCCID Smart Card Reader"
     fi
 done
