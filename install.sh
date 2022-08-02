@@ -1,4 +1,4 @@
-apt update && apt full-upgrade -y && apt install xorg slim freerd2-x11 ufw -y
+apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 ufw -y
 
 echo "default_user	user" >> /etc/slim.conf
 echo "auto_login	yes"  >> /etc/slim.conf
