@@ -3,6 +3,30 @@ apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 ufw -y
 echo "default_user	user" >> /etc/slim.conf
 echo "auto_login	yes"  >> /etc/slim.conf
 
+/usr/bin/sh -c "cat > /home/user/xfreerdp2.sh <<EOF
+#!/usr/bin/sh
+xfreerdp \
++aero \
++auto-reconnect \
+/auto-reconnect-max-retries:0 \
+/cert-ignore \
+-compression \
+/d:dc \
+-decorations \
+/dynamic-resolution \
+/f \
+/rfx \
+/video \
+-sec-nla \
+/sec:tls \
+/rfx-mode:image \
+/u:'' \
+/v:192.168.100.3:3389
+EOF
+"
+
+chmod +x /home/user/xfreerdp2.sh
+
 /usr/bin/sh -c "cat > /home/user/.xsession <<EOF
 # Укажем предпочтительный язык для интерфейса системы и приложений
 # Удали эти строки, если предпочитаешь английский язык
@@ -17,24 +41,7 @@ xset s off
 # Отключаем режим энергосбережения
 setterm -powersave off
 # Запустим XFreeRDP2-X11
-exec /usr/bin/xfreerdp \
-+aero \
-+auto-reconnect \
-/auto-reconnect-max-retries:0 \
-/cert-ignore \
--compression \
-/d:dc \
--decorations \
-/dynamic-resolution \
-/f \
-+home-drive \
-/rfx \
-/video \
--sec-nla \
-/sec:tls \
-/rfx-mode:image \
-/u:'' \
-/v:192.168.100.3:3389
+exec /home/user/xfreerdp2.sh
 EOF
 "
 
