@@ -10,16 +10,13 @@ xfreerdp \
 /cert-ignore \
 -compression \
 /d:dc \
--decorations \
 /dynamic-resolution \
 /f \
-/rfx \
-/video \
+/bpp:32 \
 -sec-nla \
 /sec:tls \
 /rfx-mode:image \
 /u:'' \
 /v:192.168.100.3:3389
-
 fi
 done
