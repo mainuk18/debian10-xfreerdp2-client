@@ -1,7 +1,11 @@
-apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 ufw -y
+apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 x11vnc ufw -y
 
 sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
 sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
+
+sed -i "s|#Port\s*22.*|Port 22|i" /etc/sshd/sshd_config
+sed -i "s|#AddressFamily\s*any.*|AddressFamily inet|i" /etc/sshd/sshd_config
+sed -i "s|#HostKey\s*ed25519.*|HostKey /etc/ssh/ssh_host_ed25519_key|i" /etc/sshd/sshd_config
 
 wget -O /home/user/xfreerdp2.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/xfreerdp2.sh -P /home/user/
 chmod +x /home/user/xfreerdp2.sh
@@ -29,7 +33,7 @@ chown user /home/user/.xsession
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow from 192.168.0.0/17 to any port ssh
-ufw allow from 192.168.0.0/17 to any port 5900:5903 proto tcp
+ufw allow from 192.168.0.0/17 to any port 5900 proto tcp
 ufw enable
 
 reboot
