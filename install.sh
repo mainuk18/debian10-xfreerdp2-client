@@ -11,7 +11,7 @@ sed -i "s|#PermitRootLogin\s* .*|PermitRootLogin yes|i" /etc/ssh/sshd_config
 sed -i "s|#UseDNS\s* .*|UseDNS no|i" /etc/ssh/sshd_config
 
 #sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT\s*=.*|GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"|i' /etc/default/grub
-sed -i "s|GRUB_TIMEOUT\s*=.*|GRUB_TIMEOUT=5|i" /etc/default/grub
+sed -i "s|GRUB_TIMEOUT\s*=.*|GRUB_TIMEOUT=0|i" /etc/default/grub
 update-grub
 
 
