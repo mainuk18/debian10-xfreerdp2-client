@@ -33,6 +33,25 @@ EOF
 
 chown user /home/user/.xsession
 
+x11vnc -storepasswd /etc/x11vnc.passwd
+chmod 0400 /etc/x11vnc.passwd
+
+/usr/bin/sh -c "cat > /lib/systemd/system/x11vnc.service <<EOF
+[Unit]
+Description=Start x11vnc
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -display :0 -auth guess -forever -loop -noxdamage -repeat -localhost -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
+
+[Install]
+WantedBy=multi-user.target
+EOF
+"
+
+systemctl enable x11vnc.service
+
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow from 192.168.0.0/17 to any port ssh
