@@ -46,7 +46,7 @@ After=multi-user.target
 User=user
 Group=user
 Type=simple
-ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -localhost -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
+ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
 
 [Install]
 WantedBy=multi-user.target
