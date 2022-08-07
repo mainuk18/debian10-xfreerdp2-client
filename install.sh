@@ -3,12 +3,12 @@ apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 x11vnc u
 sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
 sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
 
-sed -i "s|#Port\s*22.*|Port 22|i" /etc/sshd/sshd_config
-sed -i "s|#AddressFamily\s*any.*|AddressFamily inet|i" /etc/sshd/sshd_config
-sed -i "s|#HostKey\s*ed25519.*|HostKey /etc/ssh/ssh_host_ed25519_key|i" /etc/sshd/sshd_config
-sed -i "s|#IgnoreRHosts\s* .*|IgnoreRHosts yes|i" /etc/sshd/sshd_config
-sed -i "s|#PermitRootLogin\s* .*|PermitRootLogin yes|i" /etc/sshd/sshd_config
-sed -i "s|#UseDNS\s* .*|UseDNS no|i" /etc/sshd/sshd_config
+sed -i "s|#Port\s*22.*|Port 22|i" /etc/ssh/sshd_config
+sed -i "s|#AddressFamily\s*any.*|AddressFamily inet|i" /etc/ssh/sshd_config
+sed -i "s|#HostKey\s*ed25519.*|HostKey /etc/ssh/ssh_host_ed25519_key|i" /etc/ssh/sshd_config
+sed -i "s|#IgnoreRHosts\s* .*|IgnoreRHosts yes|i" /etc/ssh/sshd_config
+sed -i "s|#PermitRootLogin\s* .*|PermitRootLogin yes|i" /etc/ssh/sshd_config
+sed -i "s|#UseDNS\s* .*|UseDNS no|i" /etc/ssh/sshd_config
 
 wget -O /home/user/xfreerdp2.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/xfreerdp2.sh -P /home/user/
 chmod +x /home/user/xfreerdp2.sh
