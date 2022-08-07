@@ -1,4 +1,4 @@
-apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 x11vnc net-tools ufw -y
+apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 x11vnc net-tools alsa-utils ufw -y
 
 sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
 sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
