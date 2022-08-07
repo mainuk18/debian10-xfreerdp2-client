@@ -33,7 +33,7 @@ EOF
 
 chown user /home/user/.xsession
 
-x11vnc -storepasswd /home/user/x11vnc.passwd
+x11vnc -storepasswd /etc/x11vnc.passwd
 chmod 0400 /etc/x11vnc.passwd
 chown user /etc/x11vnc.passwd
 
