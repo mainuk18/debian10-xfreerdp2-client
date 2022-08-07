@@ -33,8 +33,9 @@ EOF
 
 chown user /home/user/.xsession
 
-x11vnc -storepasswd /etc/x11vnc.passwd
+x11vnc -storepasswd /home/user/x11vnc.passwd
 chmod 0400 /etc/x11vnc.passwd
+chown user /etc/x11vnc.passwd
 
 /usr/bin/sh -c "cat > /lib/systemd/system/x11vnc.service <<EOF
 [Unit]
@@ -42,8 +43,10 @@ Description=Start x11vnc
 After=multi-user.target
 
 [Service]
+User=user
+Group=user
 Type=simple
-ExecStart=/usr/bin/x11vnc -display :0 -auth guess -forever -loop -noxdamage -repeat -localhost -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
+ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -localhost -rfbauth /etc/x11vnc.passwd -rfbport 5900 -shared
 
 [Install]
 WantedBy=multi-user.target
