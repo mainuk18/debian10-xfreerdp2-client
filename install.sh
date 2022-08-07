@@ -1,10 +1,9 @@
 apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 ufw -y
 
-echo "default_user	user" >> /etc/slim.conf
-echo "auto_login	yes"  >> /etc/slim.conf
+sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
+sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
 
 wget -O /home/user/xfreerdp2.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/xfreerdp2.sh -P /home/user/
-
 chmod +x /home/user/xfreerdp2.sh
 
 /usr/bin/sh -c "cat > /home/user/.xsession <<EOF
