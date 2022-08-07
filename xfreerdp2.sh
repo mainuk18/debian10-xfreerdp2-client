@@ -13,6 +13,8 @@ xfreerdp \
 /dynamic-resolution \
 /f \
 /bpp:32 \
+/sound:sys:alsa \
+/microphone:sys:alsa \
 -sec-nla \
 /sec:tls \
 /rfx-mode:image \
