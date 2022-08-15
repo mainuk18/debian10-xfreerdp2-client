@@ -14,10 +14,6 @@ sed -i "s|#UseDNS\s* .*|UseDNS no|i" /etc/ssh/sshd_config
 sed -i "s|GRUB_TIMEOUT\s*=.*|GRUB_TIMEOUT=0|i" /etc/default/grub
 update-grub
 
-
-wget -O /home/user/xfreerdp2.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/xfreerdp2.sh -P /home/user/
-chmod +x /home/user/xfreerdp2.sh
-
 wget -O /home/user/rdp.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/rdp.sh -P /home/user/
 chmod +x /home/user/rdp.sh
 
