@@ -1,4 +1,4 @@
-apt update && apt full-upgrade -y && apt install xorg slim freerdp2-x11 x11vnc net-tools alsa-utils ufw -y
+apt update && apt full-upgrade -y && apt install xorg slim rdesktop x11vnc net-tools alsa-utils ufw -y
 
 sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
 sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
@@ -18,6 +18,9 @@ update-grub
 wget -O /home/user/xfreerdp2.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/xfreerdp2.sh -P /home/user/
 chmod +x /home/user/xfreerdp2.sh
 
+wget -O /home/user/rdp.sh https://raw.githubusercontent.com/mainuk18/debian10-xfreerdp2-client/main/rdp.sh -P /home/user/
+chmod +x /home/user/rdp.sh
+
 /usr/bin/sh -c "cat > /home/user/.xsession <<EOF
 # Укажем предпочтительный язык для интерфейса системы и приложений
 # Удали эти строки, если предпочитаешь английский язык
@@ -31,8 +34,8 @@ xset b off
 xset s off
 # Отключаем режим энергосбережения
 setterm -powersave off
-# Запустим XFreeRDP2-X11
-exec /home/user/xfreerdp2.sh
+# Запустим RDesktop
+exec /home/user/rdp.sh
 EOF
 "
 
