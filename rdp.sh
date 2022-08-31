@@ -9,7 +9,7 @@ do
     if [[ $(pgrep rdesktop) == ""  ]]
     then
 #       rdesktop -f -u '' -d dc -N -b -k en-us -a 24 -x l -r sound:local:alsa:default -z s3
-        rdesktop -f -u '' -d dc -N -z -k en-us -a 24 -x l -r sound:local:alsa:default s3
+        rdesktop -f -u '' -d dc -N -P -k en-us -a 24 -x l -r sound:local:alsa:default s3
 # -r scard:"EZCCID Smart Card Reader 00 00"="EZCCID Smart Card Reader"
     fi
 done
