@@ -1,7 +1,9 @@
+sed -i "s|deb cdrom\s*.*||i" /etc/apt/sources.list
+
 echo "deb https://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/buster-backports.list
 
 apt update && apt full-upgrade -y && apt install xorg slim rdesktop x11vnc net-tools alsa-utils ufw -y
-apt install -t buster-backports linux-image-5.10.0-0.bpo.15-rt-686-pae
+apt install -t buster-backports linux-image-5.10.0-0.bpo.15-rt-*
 
 sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
 sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
