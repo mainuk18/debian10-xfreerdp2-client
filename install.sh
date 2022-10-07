@@ -2,8 +2,9 @@ sed -i "s|deb cdrom\s*.*||i" /etc/apt/sources.list
 
 echo "deb https://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/buster-backports.list
 
-apt update && apt full-upgrade -y && apt install xorg slim rdesktop x11vnc net-tools alsa-utils ufw -y
-apt install -t buster-backports linux-image-5.10.0-0.bpo.15-rt-*
+#apt update && apt full-upgrade -y && apt install xorg slim rdesktop x11vnc net-tools alsa-utils ufw -y
+apt update && apt full-upgrade -y && apt install xorg slim rdesktop x11vnc net-tools alsa-utils numlockx -y
+apt install -t buster-backports linux-image-5.10.0-0.deb.10.16-rt-*
 
 sed -i "s|#default_user\s* .*|default_user        user|i" /etc/slim.conf && \
 sed -i "s|#auto_login\s* .*|auto_login          yes|i" /etc/slim.conf
@@ -33,6 +34,8 @@ setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
 xset b off
 # Отключаем экранную заставку
 xset s off
+# Включаем numlock
+numlockx on
 # Отключаем режим энергосбережения
 setterm -powersave off
 # Запустим RDesktop
@@ -64,10 +67,10 @@ EOF
 
 systemctl enable x11vnc.service
 
-ufw default deny incoming
-ufw default allow outgoing
-ufw allow from 192.168.0.0/17 to any port ssh
-ufw allow from 192.168.0.0/17 to any port 5900 proto tcp
-ufw enable
+#ufw default deny incoming
+#ufw default allow outgoing
+#ufw allow from 192.168.0.0/17 to any port ssh
+#ufw allow from 192.168.0.0/17 to any port 5900 proto tcp
+#ufw enable
 
 reboot
